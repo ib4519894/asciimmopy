@@ -1,1 +1,1 @@
-from core import map
+from core import map, entity
