@@ -18,5 +18,11 @@ class Entity:
     def set_y_pos(self, new_y_pos):
         self._y_pos = new_y_pos
     
+    def get_char(self):
+        return self._char
+    
+    def set_char(self, new_char):
+        self._char = new_char
+    
     def is_walkable(self):
         return self._walkable
