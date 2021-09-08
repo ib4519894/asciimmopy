@@ -18,3 +18,15 @@ class Map:
                 out = f"{out} {point}"
             out = f"{out}\n"
         return out
+
+    def set_point(self, x_pos, y_pos, value):
+        out = []
+        for y, old_row in enumerate(self._grid):
+            row = []
+            for x, old_value in enumerate(old_row):
+                if x == x_pos and y == y_pos:
+                    row.append(value)
+                else:
+                    row.append(old_value)
+            out.append(row)
+        self._grid = out
