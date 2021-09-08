@@ -1,1 +1,2 @@
-print("server main")
+def main():
+    print("server main")

@@ -1,1 +1,2 @@
-print("client main")
+def main():
+    print("client main")

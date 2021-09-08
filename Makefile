@@ -1,6 +1,6 @@
 python=python
-client_entrypoint=./client/main.py
-server_entrypoint=./server/main.py
+client_entrypoint=./runclient.py
+server_entrypoint=./runserver.py
 
 help:
 	@echo "-help-"
