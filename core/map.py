@@ -1,10 +1,13 @@
 from core import entity
 class Map:
-    def __init__(self, width, height, empty_char="#"):
+    def __init__(self, width, height, empty_char="#", actors=[]):
         self._width = width
         self._height = height
         self._default = empty_char
+        self.actors = actors
         self._grid = self._make_grid(self._width, self._height, self._default)
+        for actor in self.actors:
+            self._turn(actor)
 
     def _make_grid(self, width, height, char):
         grid = [[char for x in range(width)] for y in range(height)]
@@ -29,3 +32,6 @@ class Map:
                     row.append(old_value)
             out.append(row)
         self._grid = out
+    
+    def _turn(self, actor):
+        actor.action()
