@@ -1,6 +1,8 @@
-class Entity:
-    def __init__(self, name, x_pos, y_pos, char, walkable):
-        self.name = name
+from core import actor
+
+class Entity(actor.Actor):
+    def __init__(self, name, x_pos, y_pos, char, map, walkable):
+        super().__init__(name, map)
         self._x_pos = x_pos
         self._y_pos = y_pos
         self._char = char
