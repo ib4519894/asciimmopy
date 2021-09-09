@@ -45,6 +45,7 @@ def main():
     player = Player("player", 2, 2, map)
     map.actors.append(player)
     map.set_point(player.get_x_pos(), player.get_y_pos(), player._char)
+    os.system('cls' if os.name=='nt' else 'clear')
 
     while True:
         print(map.get_map())
