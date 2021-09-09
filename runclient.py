@@ -1,2 +1,5 @@
 from client import main
-main.main()
+import asyncio
+
+loop = asyncio.get_event_loop()
+loop.run_until_complete(main.main())

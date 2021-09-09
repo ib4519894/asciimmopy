@@ -1,4 +1,4 @@
-import core, os
+import core, os, aiohttp
 
 class Player(core.entity.Entity):
     def __init__(self, name, start_x, start_y, map):
@@ -39,7 +39,7 @@ class Player(core.entity.Entity):
             self.set_x_pos(self.get_x_pos() + 1)
             self._map.set_point(self.get_x_pos(), self.get_y_pos(), "@")
 
-def main():
+async def main():
     print("client main")
     map = core.map.Map(20, 5)
     player = Player("player", 2, 2, map)
@@ -47,7 +47,10 @@ def main():
     map.set_point(player.get_x_pos(), player.get_y_pos(), player._char)
     os.system('cls' if os.name=='nt' else 'clear')
 
-    while True:
+    async def iteration():
         print(map.get_map())
         map.turn()
         os.system('cls' if os.name=='nt' else 'clear')
+    
+    while True:
+        await iteration()
