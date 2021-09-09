@@ -21,7 +21,7 @@ class Map:
             out = f"{out}\n"
         return out
 
-    def _set_point(self, x_pos, y_pos, char):
+    def set_point(self, x_pos, y_pos, char):
         out = []
         for y, old_row in enumerate(self._grid):
             row = []
