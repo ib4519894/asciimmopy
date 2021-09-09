@@ -6,8 +6,6 @@ class Map:
         self._default = empty_char
         self.actors = actors
         self._grid = self._make_grid(self._width, self._height, self._default)
-        for actor in self.actors:
-            self._turn(actor)
 
     def _make_grid(self, width, height, char):
         grid = [[char for x in range(width)] for y in range(height)]
@@ -33,5 +31,6 @@ class Map:
             out.append(row)
         self._grid = out
     
-    def _turn(self, actor):
-        actor.action()
+    def turn(self):
+        for actor in self.actors:
+            actor.action()
