@@ -1,4 +1,4 @@
-from core import entity
+import core
 class Map:
     def __init__(self, width, height, empty_char="#", actors=[]):
         self._width = width

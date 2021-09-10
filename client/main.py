@@ -41,7 +41,7 @@ class Player(core.entity.Entity):
 
 async def main():
     print("client main")
-    map = core.map.Map(20, 5)
+    map = core.Map(20, 5)
     player = Player("player", 2, 2, map)
     map.actors.append(player)
     map.set_point(player.get_x_pos(), player.get_y_pos(), player._char)
