@@ -1,4 +1,5 @@
-import os, core, client
+import os, jsonpickle
+import core, client
 
 class Player(core.entity.Entity):
     def __init__(self, name, start_x, start_y, map):
@@ -54,7 +55,8 @@ async def main():
     
     while True:
         await iteration()
+        print(await client.sync("https://9999-gray-mink-er4tf1nn.ws-us15.gitpod.io/", {}))
         try:
-            await client.sync("localhost:9999", {})
+            server_map = jsonpickle.decode(await client.sync("https://9999-gray-mink-er4tf1nn.ws-us15.gitpod.io/", {}))
         except Exception as e:
             print(f"Error, cannot connect to server:     {e}")
