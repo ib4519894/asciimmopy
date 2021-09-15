@@ -6,9 +6,14 @@ def main():
     map = core.Map(10, 10, "#")
     
     routes = web.RouteTableDef()
+
+    @routes.post("/")
+    async def receive_sync(request):
+        data = (await request.post())["map"]
+        print(data)
     
     @routes.get("/")
-    async def get_sync(request):
+    async def respond_sync(request):
         data = {"map":jsonpickle.encode(map)}
         return web.json_response(data)
     
