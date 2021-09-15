@@ -42,6 +42,7 @@ class Player(core.entity.Entity):
 
 async def main():
     print("client main")
+    server = "https://9999-green-tarsier-beurmlis.ws-us15.gitpod.io/"
     map = core.Map(20, 5)
     player = Player("player", 2, 2, map)
     map.actors.append(player)
@@ -55,8 +56,8 @@ async def main():
     
     while True:
         await iteration()
-        print(await client.sync("https://9999-gray-mink-er4tf1nn.ws-us15.gitpod.io/", {}))
+        print(await client.sync(server, jsonpickle.encode(map.get_map)))
         try:
-            server_map = jsonpickle.decode(await client.sync("https://9999-gray-mink-er4tf1nn.ws-us15.gitpod.io/", {}))
+            server_map = jsonpickle.decode(await client.sync(server, {"map":map.get_map()}))
         except Exception as e:
             print(f"Error, cannot connect to server:     {e}")
