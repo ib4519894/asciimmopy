@@ -26,7 +26,7 @@ class Player(core.entity.Entity):
         elif user_input == "w":
             self._map.set_point(self.get_x_pos(), self.get_y_pos(), self._map._default)
             self.set_y_pos(self.get_y_pos() - 1)
-            self._map.set_point(self.get_x_pos(), self.get_y_pos(), "@")
+            self._map.set_point(self.get_x_pos(), self.get_y_pos(), "@")     
         elif user_input == "s":
             self._map.set_point(self.get_x_pos(), self.get_y_pos(), self._map._default)
             self.set_y_pos(self.get_y_pos() + 1)
@@ -41,8 +41,6 @@ class Player(core.entity.Entity):
             self._map.set_point(self.get_x_pos(), self.get_y_pos(), "@")
 
 async def main():
-    print("client main")
-    server = "https://9999-green-tarsier-beurmlis.ws-us15.gitpod.io/"
     map = core.Map(20, 5)
     player = Player("player", 2, 2, map)
     map.actors.append(player)
@@ -56,8 +54,3 @@ async def main():
     
     while True:
         await iteration()
-        print(await client.sync(server, jsonpickle.encode(map.get_map)))
-        try:
-            server_map = jsonpickle.decode(await client.sync(server, {"map":map.get_map()}))
-        except Exception as e:
-            print(f"Error, cannot connect to server:     {e}")
